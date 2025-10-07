@@ -1,0 +1,42 @@
+### Solicita um token para o usuário com a api_key
+POST http://localhost:3000/authenticate
+content-type: application/json
+
+{
+  "api_key":"4a8e078e-33b7-4d94-926f-27f79fe2e04c"
+}
+
+### ATENÇÃO: Substitua o token abaixo pelo gerado no request anterior
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNzA5ODExNjYwLCJpc3MiOiJzYWxhby1hcGkiLCJleHAiOjE3MDk4MTUyNjB9.r8O1...
+
+### Lista todos os clientes
+GET http://localhost:3000/clientes
+authorization: Bearer {{token}}
+
+### Cria um novo cliente
+POST http://localhost:3000/clientes
+content-type: application/json
+authorization: Bearer {{token}}
+
+{
+  "nome": "Maria Silva",
+  "cpf": "12345678901",
+  "idade": 30,
+  "telefone": "11987654321",
+  "endereco": "Rua das Flores, 123"
+}
+
+### Lista todos os agendamentos
+GET http://localhost:3000/agendamentos
+authorization: Bearer {{token}}
+
+### Cria um novo agendamento
+POST http://localhost:3000/agendamentos
+content-type: application/json
+authorization: Bearer {{token}}
+
+{
+  "cliente_id": "ID_DO_CLIENTE_CRIADO_ANTERIORMENTE",
+  "data_hora": "2024-03-10T14:00:00Z",
+  "servico": "Corte de Cabelo"
+}
